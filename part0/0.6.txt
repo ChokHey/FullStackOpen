@@ -1,0 +1,24 @@
+title 0.6
+
+Browser->Server: HTTP GET Request https://studies.cs.helsinki.fi/exampleapp/new_note
+Server->Browser:HTML-Code
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Server-->Browser: main.css
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+Browser-->Server: spa.js
+
+note over Browser:
+browser starts executing js-code
+that requests JSON data from server
+end note
+
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+Server-->Browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+
+note over Browser:
+browser executes the event handler
+that renders notes to display
+end note
+
+Browser -> Server:HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+Server -> Browser: application/json
